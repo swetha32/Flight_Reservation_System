@@ -1,16 +1,46 @@
 package com.upgrad;
 
 public class Passenger {
+    private static int idCounter = 0;
     public int id;
-    public Address address;
-    public Contact contact;
-    /*public Contact getContact(){
-        return contact;
+    public static class Address {
+        String street, city, state;
+        Address(String street, String city, String state){
+            this.street=street;
+            this.city=city;
+            this.state=state;
+        }
     }
-    public Address getAddress(){
-        return address;
+    public Address address;
+    public static  class Contact {
+        String name, phone, email;
+        Contact(String name, String phone, String email){
+            this.name=name;
+            this.phone=phone;
+            this.email=email;
+        }
     }
 
-     */
+    public Contact contact;
+    public Passenger(String street, String city, String state,String name, String phone, String email){
+        this.id = ++idCounter;
+        this.address = new Address(street,city,state);
+        this.contact = new Contact(name, phone, email);
+    }
+    public int getId(){
+        return this.id;
+    }
+    public String getContact(){
+        String str =  "Name: " + contact.name + ", PhoneNo: " + contact.phone + ", Email: " + contact.email;
+        return str;
+    }
+    public String getAddress(){
+        String str = "Street: " + address.street + ", City: " + address.city + ", State: " + address.street;
+        return str;
+    }
+
+public static int getPassengerCount() {
+        return idCounter;
+}
 
 }
